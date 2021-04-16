@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-2.2.4.min.js"></script>
+</head>
+<body>
+    <div class="ePage_txt">
+        <p class="txt"><span class="posX"></span></p>
+        <p class="txt"><span class="posY"></span></p>
+    </div>
+
+    <div class="motion_wrap">
+        <div class="motion_img"></div>
+    </div>
+</body>
+</html>
+
+<style>
+    .motion_wrap {position:absolute; top:0; left:0; width:100%; height:100vh; background:url("./motion_bg.jpg") no-repeat 50%; background-size:cover; transition:all 0.6s linear;}
+    .ePage_txt {position:absolute; top:0; left:0; z-index:2; font-size:50px; font-weight:bold; color:blueviolet;}
+
+</style>
+<script>
+    $(function(){
+        $(window).on("mousemove", function(e){
+            var winW = $(window).width();
+            var winH = $(window).height();
+            var x = e.pageX ;
+            var y = e.pageY;
+            $(".posX").text(x);
+            $(".posY").text(y);
+
+            $(".motion_wrap").css("background-position-x",Math.floor((x/winW)*100) + "%");
+        });
+    });
+</script>

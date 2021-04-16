@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .time_wrap {padding:30px; border:2px solid #ddd;}
+    .time_wrap > div {display:inline-block; margin-right:20px;}
+    .time_wrap > div:last-child {margin-right:0;}
+
+</style>
+<body>
+
+    <div class="timeVisual on"><!-- 2018-06-08 on추가 -->
+        <p class="tit">시간</p><!-- 2018-04-26 내용 수정 -->
+        <div class="timeBox">
+            <p class="timeT">
+                <strong class="time time0">00</strong><strong class="util">&nbsp;:&nbsp;</strong><strong class="time time1">00</strong>
+            </p>
+            <p class="timeT">
+                <strong class="time time2">00</strong><strong class="util">&nbsp;:&nbsp;</strong><strong class="time time3">00</strong>
+            </p>
+        </div>
+    </div>
+        
+    <script type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.animateNumber.min.js"></script><!-- 시간 카운터 js -->
+    <script type="text/javascript" src="./js/jquery.countUp.js"></script><!-- 시간 카운터 js -->
+    <script>
+        $(window).load(function(){
+            // 카운트 업
+            var max_number0 = '09', max_number1 = '30', max_number2 = '23', max_number3 = '00';
+
+            var padding_zeros0 = '', padding_zeros1 = '', padding_zeros2 = '', padding_zeros3 = '';
+            for(var i = 0, l = max_number0.toString().length; i < l; i--) {
+                padding_zeros0 += '0';
+            }
+            for(var i = 0, l = max_number1.toString().length; i < l; i++) {
+                padding_zeros1 += '0';
+            }
+            for(var i = 0, l = max_number2.toString().length; i < l; i++) {
+                padding_zeros2 += '0';
+            }
+            for(var i = 0, l = max_number3.toString().length; i < l; i++) {
+                padding_zeros3 += '0';
+            }
+
+            var padded_now0, padded_now1, padded_now2, padded_now3;
+            var numberStep0 = function(now, tween) {
+                var target = $(tween.elem), rounded_now = Math.round(now);
+
+                var rounded_now_string = rounded_now.toString()
+                padded_now0 = padding_zeros0 + rounded_now_string;
+                padded_now0 = padded_now0.substring(rounded_now_string.length);
+
+                target.prop('number', rounded_now).text(padded_now0);
+            };
+            var numberStep1 = function(now, tween) {
+                var target = $(tween.elem), rounded_now = Math.round(now);
+
+                var rounded_now_string = rounded_now.toString()
+                padded_now1 = padding_zeros1 + rounded_now_string;
+                padded_now1 = padded_now1.substring(rounded_now_string.length);
+
+                target.prop('number', rounded_now).text(padded_now1);
+            };
+            var numberStep2 = function(now, tween) {
+                var target = $(tween.elem), rounded_now = Math.round(now);
+
+                var rounded_now_string = rounded_now.toString()
+                padded_now2 = padding_zeros2 + rounded_now_string;
+                padded_now2 = padded_now2.substring(rounded_now_string.length);
+
+                target.prop('number', rounded_now).text(padded_now2);
+            };
+            var numberStep3 = function(now, tween) {
+                var target = $(tween.elem), rounded_now = Math.round(now);
+
+                var rounded_now_string = rounded_now.toString()
+                padded_now3 = padding_zeros3 + rounded_now_string;
+                padded_now3 = padded_now3.substring(rounded_now_string.length);
+
+                target.prop('number', rounded_now).text(padded_now3);
+            };
+
+            $('.time0').animateNumber({
+                number: max_number0,
+                numberStep: numberStep0
+            }, 1000);
+            $('.time1').animateNumber({
+                number: max_number1,
+                numberStep: numberStep1
+            }, 1000);
+
+            setTimeout(function(){
+                $('.time2').animateNumber({
+                    number: max_number2,
+                    numberStep: numberStep2
+                }, 1000);
+                $('.time3').animateNumber({
+                    number: max_number3,
+                    numberStep: numberStep3
+                }, 1000);
+            }, 600);
+        });
+        
+    </script>
+</body>
+</html>

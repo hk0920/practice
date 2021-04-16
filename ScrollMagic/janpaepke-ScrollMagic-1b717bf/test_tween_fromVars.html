@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {margin:0; padding:0;}
+    body {background-color:#f8f8f8;}
+    .top {padding:120pox 50px; border-bottom:1px solid #e0e0e0; background-color:#fff;}
+    .top h1 {font-size:70px;}
+    .top p {margin-top:8px; font-size:15px; line-height:140%;}
+    .main {margin-top:120px; padding:0 50px;}
+    .main h2 {font-size:30px; margin-bottom:20px; letter-spacing:2px;}
+    .main .textWrap {padding-bottom:30px; border-bottom:1px solid #aaa;}
+    .main .spacer {height:150px;}
+    .main .text {font-size:14px; margin-bottom:10px; line-height:140%;}
+    .main .iconWrap {display:flex; flex-wrap:wrap;}
+    .main .icon {width:140px; height:140px; margin-right:30px; color:#fff; font-size:40px; line-height:140px; text-align:center; background-color:#999; border-radius:100%;}
+    .trigger {width:100%; height:auto; font-weight:bold; font-size:20px; background-color:#baba77;}
+    .footer {margin-top:240px; padding:0 50px; height:40px; background-color:#222;}
+    .footer a {display:block; line-height:40px; letter-spacing:1px; text-align:right; color:#fff;}    
+</style>
+<body>
+    <div id="wrap">
+        <div class="top">
+            <h1>scrollMagic demo</h1>
+            <p>스트롤매직 데모 테스트입니다.</p>
+        </div>
+        <div class="main">
+            <h2>What a wondoerful!</h2>
+            <div class="textWrap">
+                <p class="text">Dolore occaecat cupidatat nostrud voluptate officia anim culpa minim in eiusmod eiusmod in. Esse magna excepteur est eiusmod excepteur laborum amet esse sint sit velit cupidatat excepteur. Aliquip magna dolore quis in tempor ipsum. Ad nostrud cupidatat ut do exercitation nulla ipsum culpa. Dolor laboris sunt voluptate nostrud. Cupidatat non sint est proident pariatur nulla. Aliqua reprehenderit ad do in ut deserunt sit.</p>
+                <p class="text">Amet aliquip incididunt exercitation et consequat sint laborum nulla. Excepteur qui ut cillum eu quis irure elit proident deserunt eiusmod consectetur. Amet occaecat et ex in dolore velit esse occaecat fugiat id et.</p>
+            </div>
+            <div class="spacer"></div>
+            <div class="trigger" id="trigger1">Trigger!</div>
+            <div class="spacer"></div>
+            <div class="iconWrap">
+                <div id="animate1" class="icon">Hello</div>
+                <div id="animate2" class="icon">I'M</div>
+                <div id="animate3" class="icon">NY</div>
+                <div id="animate4" class="icon">KIM</div></div>
+            </div>
+        </div>
+        <div class="footer"><a href="javascript:">nykim.work</a></div>
+    </div>
+
+    
+    <script src="scrollmagic/minified/ScrollMagic.min.js"></script>
+    <script src="scrollmagic/minified/plugins/debug.addIndicators.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
+    <script>
+        var controller = new ScrollMagic.Controller();
+
+        var tweenStagger = TweenMax.staggerFromTo(".icon", 1, {scale:0.85}, {backgroundColor:"#dc143c", scale:1.2, rotation:360}, 1);
+
+        var scene = new ScrollMagic.Scene({ // tweenStagger 예
+            triggerElement : "#trigger1",
+            duration:120
+        })
+        .setTween(tweenStagger)
+        .addTo(controller)
+        .addIndicators({name:"1"});
+    </script>
+</body>
+</html>

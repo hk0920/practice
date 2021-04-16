@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/gsap.min.js"></script>
+</head>
+<style>
+    * {padding:0; margin:0;}
+    
+    .section {height:100vh;}
+    .t1 {background:purple;}
+    .t2 {background:blueviolet;}
+    .t3 {background:pink;}
+</style>
+<body>
+    <div id="wrap">
+        <div class="section t1"></div>
+        <div class="section t2"></div>
+        <div class="section t3"></div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(function(){
+        var scrollEvent = false;
+        var count = 0;
+
+        $("#wrap").on("mousewheel DOMMouseScroll", function(e){
+            var E = e.originalEvent;
+            delta = 0;
+
+            if(E.detail){
+
+            }else{
+                delta = E.wheelDelta;
+                deltaY = E.deltaY;
+
+                if(delta > 0) {
+                    if(scrollEvent == false && count >= 1){
+                        console.log("up")
+                        count--;
+                        scrollEvent = true;
+
+                        gsap.to($("html, body"), 0.6,{scrollTop:$(".section").height()*count, ease:Power3.easeOut, onComplete:function(){
+                            scrollEvent = false;
+                        }});
+                    }
+                }else{
+                    if(scrollEvent == false && count < 3){
+                        console.log("down")
+                        count++;
+                        scrollEvent = true;
+
+                        
+                        gsap.to($("html, body"), 0.6,{scrollTop:$(".section").height()*count, ease:Power3.easeOut, onComplete:function(){
+                            scrollEvent = false;
+                        }})
+                    }
+                }
+            }
+        });
+    })
+</script>

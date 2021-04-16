@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {margin:0; padding:0;}
+    body {background-color:#f8f8f8;}
+    .top {padding:120pox 50px; border-bottom:1px solid #e0e0e0; background-color:#fff;}
+    .top h1 {font-size:70px;}
+    .top p {margin-top:8px; font-size:15px; line-height:140%;}
+    .main {margin-top:120px; padding:0 50px;}
+    .main h2 {font-size:30px; margin-bottom:20px; letter-spacing:2px;}
+    .main .textWrap {padding-bottom:30px; border-bottom:1px solid #aaa;}
+    .main .spacer {height:150px;}
+    .main .text {font-size:14px; margin-bottom:10px; line-height:140%;}
+    .main .icon-back {width:70%; height:300px; border:1px solid #999; background:#fff; margin:40px auto 70px; display:flex; justify-content:center; align-items:center;}
+    .main .icon {font-size:45px; color:#dddddd;}
+    .trigger {width:100%; height:auto; font-weight:bold; font-size:20px; background-color:#baba77;}
+    .footer {margin-top:240px; padding:0 50px; height:40px; background-color:#222;}
+    .footer a {display:block; line-height:40px; letter-spacing:1px; text-align:right; color:#fff;}    
+    .fixed {position:fixed; top:0; left:0; background:#fff; border:1px solid #aaa; padding:20px; box-shadow:3px 4px 12px -3px #aaa;}
+    .fixed .active {color:red; font-weight:bold; font-size:20px;}
+    .pin1{position:absolute; top:50%; left:50%; width:80px; height:80px; border-radius:50%; background:blue;}
+</style>
+<body>
+    <div class="wrap">
+        <div class="top">
+            <h1>ScrollMagic Demo</h1>
+            <p>스크롤매직 라이브러리 데모입니다.<br/><a href="javascript:" target="_blank">여기</a>에서 더 많은 예시를 확인할 수 있습니다.</p>
+        </div>
+        <div class="main">
+            <div class="textWrap">
+            <h2>What a wonderful!</h2>
+                <p class="text">Dolore occaecat cupidatat nostrud voluptate officia anim culpa minim in eiusmod eiusmod in. Esse magna excepteur est eiusmod excepteur laborum amet esse sint sit velit cupidatat excepteur. Aliquip magna dolore quis in tempor ipsum. Ad nostrud cupidatat ut do exercitation nulla ipsum culpa. Dolor laboris sunt voluptate nostrud. Cupidatat non sint est proident pariatur nulla. Aliqua reprehenderit ad do in ut deserunt sit.</p>
+                <p class="text">Amet aliquip incididunt exercitation et consequat sint laborum nulla. Excepteur qui ut cillum eu quis irure elit proident deserunt eiusmod consectetur. Amet occaecat et ex in dolore velit esse occaecat fugiat id et.</p>
+            </div>
+            <div class="iconWrap">
+            <div class="spacer"></div>
+            <div class="trigger" id="trigger1">Trigger (1)</div>
+            <div class="icon-back">
+                <p id="animate1" class="icon">♥︎</p>
+            </div>
+            <div class="pin1"></div>
+            <div class="trigger" id="trigger2">Trigger (2)</div>
+            <div class="icon-back">
+                <p id="animate2" class="icon">★</p>
+            </div>
+            <div class="trigger" id="trigger3">Trigger (3)</div>
+            <div class="icon-back">
+                <p id="animate3" class="icon">✿</p>
+            </div>
+        </div>
+        <div class="footer"><a href="https://nykim.work">nykim.work</a></div>
+            <div class="fixed">
+                <p class="info1">one</p>
+                <p class="info2">two</p>
+                <p class="info3">three</p>
+            </div>
+    </div>
+
+    
+    <script src="scrollmagic/minified/ScrollMagic.min.js"></script>
+    <script src="scrollmagic/minified/plugins/debug.addIndicators.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
+    <script>
+            var controller = new ScrollMagic.Controller({
+                globalSceneOptions:{
+                    duration:436
+                }
+            });
+
+            var tween1 = TweenMax.to("#animate1", 0.3, {color:"#60c5ba", scale:4, y:10, rotation:360});
+            var tween2 = TweenMax.to("#animate2", 0.3, {color:"#ffc952", scale:4, y:10, rotation:360});
+            var tween3 = TweenMax.to("#animate3", 0.3, {color:"#6a60a9", scale:4, y:10, rotation:360});
+
+            var scene1 = new ScrollMagic.Scene({
+                triggerElement : "#trigger1",
+                triggerHook : 0.2,
+                duration : 600
+            })
+            .setTween(tween1)
+            //.setPin(".pin1")
+            .setPin(".pin1", {pushFollowers: false})
+            .setClassToggle(".info1", "active")
+            .addTo(controller)
+            .addIndicators({
+                name:"1 (duration:700)"
+            });
+
+            var scene2 = new ScrollMagic.Scene({
+                triggerElement : "#trigger2"        
+            })
+            .setClassToggle(".info2", "active")
+            .setTween(tween2)
+            .addTo(controller)
+            .addIndicators({
+                name:"2"
+            });
+
+            var scene3 = new ScrollMagic.Scene({
+                triggerElement : "#trigger3"        
+            })
+            .setClassToggle(".info3", "active")
+            .setTween(tween3)
+            .addTo(controller)
+            .addIndicators({
+                name:"3"
+            });
+       
+            
+    </script>
+</body>
+</html>
