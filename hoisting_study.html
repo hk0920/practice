@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoisting 호이스팅</title>
+</head>
+<body>
+    <script>
+        /*
+            @ 호이스팅 : 코드에 선언된 변수 및 함수를 코드 상단으로 끌어올리는 것.
+            
+            - 변수 호이스팅 : 변수 선언부만 끌어올려진다. / 변수 값은 후에 생성된다.
+                              함수 내에서 선언한 함수범위의 변수는 해당 함수의 최상위로,
+                              함수 밖에서 선언한 전역범위의 전역변수는 스크립트 단위의 최상단으로 끌어올려진다.
+        */
+
+        function showName(){
+            // name 변수는 호이스팅 되었으며, 변수 할당 값은 이후에 발생하기 때문에 이 시점에는 undifined.
+            // var name; - 눈에 보이지 않지만 함수호출 시 변수 name은 undefined 값으로 생성
+            console.log("First name :" + name);     // First name :undefined 
+
+            var name = "heegue";
+            console.log("Last name :" + name);      // Last name :heegue
+        }
+        showName();
+
+
+        /*
+            - 함수 호이스팅
+            : 함수선언식은 함수호이스팅(함수 전체)이 되고, 함수 표현식은 변수에 익명함수를 넣은 형태라 해당 변수만 호이스팅되니 변수 호이스팅처럼 undefined가 나온다.
+        */
+
+        
+        // (1) 함수 선언식 : function 함수명 (){ 코드 };
+        kim();
+        function kim (){    // 함수명 kim 이 곧 변수명 (함수명 = 변수명)
+            console.log("call kim");
+        }
+
+        
+        // (2) 함수 표현식 : var 변수명 = function(){ 코드 };
+        lee();                              // 에러 :  변수만 호이스팅이 되어 lee 함수를 못찾아서 에러가 뜬다.
+        var lee = function(){               // 변수명 lee가 곧 함수명 (변수명 = 함수명)
+            console.log("call lee");
+        };
+
+        // lee();                           함수 표현식을 먼저 써준 후 호출해야 에러가 안뜬다.
+
+
+    </script>
+</body>
+</html>

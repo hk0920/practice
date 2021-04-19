@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 타입</title>
+</head>
+<body>
+    <script>
+        /* 
+        @ 데이터 타입
+            - 기본타입 : String , Number , Boolean , undefined, null
+            - 참조타입 : 객체(배열, 함수, 정규 표현식)
+        */
+
+        // -기본타입 - str , test 변수는 각각 다른 별개의 변수(파일)이기 때문에 서로에게 영향을 안준다.
+
+        var str = "hello world"
+        var test = str;     //  == var test = "hello world"; (ctrl _ c 복사하기와 같은 의미);
+        test = "Nice to meet you";
+
+        console.log("str :" + str);     // hello world
+        console.log("test :" + test);   // Nice to meet you
+
+
+        // -참조타입 - 참조는 '가리킨다'라는 말로 설명,
+        //             기본타입과 같게 이해하면 안되고, 객체의 속성(프로퍼티)를 담고있는 주소 값은 객체와 별개로 생각해주면 이해하기 편하다. 
+
+        // 1. 객체 예시
+        
+        // obj, test 가 참조하고 있는 프로퍼티를 담은 주소값을 가리킨다.
+        // obj -> {프로퍼티를 담고있는 주소 (name: "heegue" ... 프로퍼티)}
+        // test ↗
+
+        var obj = {
+            name : "heegue",
+            age : 29,
+            gender : "female"
+        }
+
+        var test = obj;  // 객체가 참조하고 있는 프로퍼티를 담고있는 주소를 가리킨다. 
+
+        test.city = "Seoul";
+
+        console.log(obj);   // {name:'heegue', age: 29, gender : 'female', city : 'Seoul'}
+        console.log(test);  // {name:'heegue', age: 29, gender : 'female', city : 'Seoul'}
+
+        // 2. 배열예시
+
+        // arr 이 참조하고 있는 프로퍼티가 test를 가리킨다
+        // arr -> {프로퍼티 (name: "heegue" ... )}
+        // arrTest ↗
+        var arr = ["apple", "banana", "tomato"];
+
+        var arrTest = arr;  // 객체가 참조하고 있는 프로퍼티를 담고있는 주소를 가리킨다. 
+
+        arrTest[3] = "Seoul";
+
+        console.log(arr);       //  (4) ["apple", "banana", "tomato", "Seoul"];
+        console.log(arrTest);   //  (4) ["apple", "banana", "tomato", "Seoul"];
+
+        /*
+        arr 변수에 참조할 메모리 주소값이 들어있 는데 
+        arr에 null을 넣어버리면 변수가 참조할 대상이 없어지면서 
+        가비지 콜렉터 대상이 된다.
+        arr에 저렇게 객체를 대입하면 실제로는 해당 객체가 들어있는 메모리 주소를 담고있게 된다.
+        새로운 변수에 arr을 넣으면 복사되는 값이 해당 객체의 주소 값을 넣는것이다.
+        그래서 두 변수가 같은 대상을 가르키고 있는 것이다.
+
+        예)
+            var arr = ["apple", "banana", "tomato"];
+
+            var arrTest = arr;
+
+            arr = null;
+
+            arrTest[3] = "Seoul";
+
+            console.log(arr);       //  null;
+            console.log(arrTest);   //  (4) ["apple", "banana", "tomato", "Seoul"];
+        */
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실행 컨텍스트</title>
+</head>
+<body>
+    <script>
+        /*
+        @ 실행 컨텍스트 : 기존언어에서는 콜 스택.../ 호출 시에 컨텍스트가 만들어진다.                        
+        */
+             
+        console.log("First Context");               // (순서-0)
+
+        function firstFunc (){
+            console.log("First Function Context");  // (순서-3)
+        }
+
+        function secondFunc (){
+            firstFunc();                            // (순서-2)
+            console.log("Second Function Context"); // (순서-4)
+        }
+
+        secondFunc();                               // (순서-1)
+
+        // 위 코드 설명 (1) :
+        // (순서-0) - 전역컨텍스트 -> 실행 컨텍스트 스택에 넣으면서 쌓임(전역 컨텍스트)
+        // (순서-1) - secondFunc() 호출 -> 실행 컨텍스트 스택에 넣으면서 쌓임(전역 컨텍스트 -> secondFunc())
+        // (순서-2) - firstFunc() 호출 -> 실행 컨텍스트 스택에 넣으면서 쌓임(전역 컨텍스트 -> secondFunc() - > firstFunc())
+        // (순서-3) - firstFunc() 값 반환
+        // (순서-4) - secondFunc() 값 반환   
+
+
+        function exeContext(firstParam, secondParam){   // (1)
+            var a = 100, b = 200;                       // (2)
+
+            function func(){
+                return a + b;                           // (3) 100 + 200 = 300
+            }
+
+            return firstParam + secondParam + func();   
+        }
+
+        console.log(exeContext(300,400));
+
+        // 위 코드 설명 (2) :
+        // (1) - 매개변수(arguments)를 참조한다. - firstParam, secondParam
+        // (2) - 최초생성 a,b 는 모두 빈값(undefined) / 후 바로 100, 200값을 할당
+        //       var a; var b;
+        //       a = 100; b = 200;
+        // (3) - a, b가 func안에 선언되지 않았기때문에 a, b를 찾기 위해 스코프 체인으로 올라가서 exContext 안에 선언되어있는 a, b값을 찾아옴
+        
+
+        var num1 = 100;
+        var num2 = 200;
+
+        console.log(num1);
+        console.log(num2);       
+
+        // 위 코드 설명 (3) : 전역 실행컨텍스트 구현 순서 
+        // 활성 객체 -> scope(스코프 체인-전역객체) -> num1 -> num2 -> this(전역 실행컨텍스트에서 this는 window)
+        // num1, num2 - 전역변수로 선언
+
+
+        // 전역변수
+        var number1 = 100;
+        var number2 = 200;
+
+        function func (){
+            // 지역변수
+            var number1 = 1000;            
+            var number2 = 2000;            
+
+            console.log(number1);
+            console.log(number2);
+        }
+
+        func();
+        
+        // 위 코드 설명 (4) : 전역 실행컨텍스트 안에 지역컨텍스트 구현 순서
+        // (1) 활성 객체 -> scope(스코프 체인 - (0) 전역객체) -> num1(전역변수) -> num2(전역변수) -> func - > this
+        // (2) func 실행 컨텍스트 순서 : 활성 객체 -> scope(스코프 체인 - (0) 전역객체, (1) func 변수 객체) -> num1(지역변수) -> num2(지역변수) -> this
+       
+
+        function test (){   // arguments(인자값)가 없어도 parameter은 항상 생성됨 (함수에서는 OK)
+            var a = arguments;
+            return a.length;
+        }
+        
+        console.log(test());
+       
+        // 함수는 parameter(매개변수)는 항상 생성된다, 인자값(arguments)를 적지 않아도 parameter(매개변수)에 접근가능하다. (단, 전역변수에서는 parameter(매개변수)는 생성이 안된다.)
+        // arguments.lenth 출력해봐도 출력이 된다.
+
+
+    </script>
+</body>
+</html>

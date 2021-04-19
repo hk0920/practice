@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /*var copyObjectDeep = function(target){
+             var result = {};
+             if(typeof target === "object" && target !== null){
+                for(var prop in target) {
+                    result[prop] = copyObjectDeep(target[prop]);
+                    console.log("obj :"  + prop);                    
+                }
+             }else{
+                 result = target;
+                 console.log("result:" + result)
+             }
+
+             console.log("결과 :" + result)
+
+             return result;
+        }
+
+        var obj = {
+            a:1, 
+            b:{
+                c:null,
+                d : ["apple","banana"],
+                e : "fff"
+            }
+        }
+        
+        var obj2 = copyObjectDeep(obj);*/
+
+        /*var a = 1;
+        function outer(){
+            function inner(){
+                console.log("111 :" + a);
+                var a = 3;
+            }
+            inner();
+            console.log("222 :" + a);
+        }
+
+        outer();
+        console.log("333 :" + a);*/
+
+        /*function a () {
+            var x = 1;
+            console.log(x);
+            var x;
+            console.log(x);
+            var x = 2;
+            console.log(x);
+        }
+
+        a()*/
+        
+        /*function sum(a,b){
+            return a + b;
+        }
+        var multiply;
+
+        console.log(sum(1,2));
+        console.log(multiply(3,4));
+
+       
+
+        multiply = function (a,b){
+            return a * b;
+        }*/
+
+        /*var a = 1;
+        var outer = function(){
+            var inner = function(){
+                console.log(a);
+                var a = 3;
+            }
+            inner();
+            console.log(a);
+        }
+        outer();
+        console.log(a); */
+
+        /*var a = 1;
+        var outer = function(){
+            var b = 2;
+            var inner = function(){
+                console.log(b);
+                debugger;
+            }
+            inner();
+        }
+        outer();*/
+        
+        /*setTimeout(function(){
+            console.log(this);
+        },300);
+
+        [1,2,3,4,5].forEach(function(x){
+            console.log(this);
+        });
+
+        document.body.innerHTML += '<button id="a"></button>';
+        document.body.querySelector("#a").addEventListener("click", function(e){
+            console.log(this)
+        });*/
+
+        /*var cat = function(name, age){
+            this.bark = "야옹";
+            this.name = name;
+            this.age = age;
+        }
+
+        var choco = new cat("초코", 7);
+        var nabi = new cat("나비", 5);
+
+        console.log(choco , nabi);*/
+
+        /*var obj1 = {
+            outer:function(){
+                console.log(this);      // (1)
+                var innerFunc = function(){
+                    console.log(this);      // (2), // (3)
+                }
+                innerFunc();
+
+                var obj2 = {
+                    innerMethod :innerFunc,
+                    name : "한"
+                };
+
+                obj2.innerMethod();
+                console.log(obj2.innerMethod);
+            }
+        }
+        obj1.outer();*/
+        
+        /*var str = 'abc def';
+        
+        Array.prototype.push.call(str, ',pushed string');
+
+        Array.prototype.concat.call(str, 'string');
+        
+        Array.prototype.every.call(str, function(c){
+            return c !== '';
+        });
+
+        Array.prototype.some.call(str , function(c){
+            return c === '';
+        });
+
+        var newArr = Array.prototype.map.call(str, function(c){
+            return c + '!';
+        });
+        console.log(newArr);
+
+
+        var newStr = Array.prototype.reduce.apply(str, [
+            function(string, char, i){
+                return string + char + i;
+            }
+        ]);
+        console.log(newStr);*/
+
+        /*var obj1 = {
+            name: 'obj1',
+            func: function(){
+                var self = this;
+                return function(){
+                    console.log(self.name);
+                }                
+            }
+        }
+        var callback = obj1.func();
+        setTimeout(callback, 1000);
+
+        var obj2 = {
+            name:'obj2',
+            func:obj1.func            
+        };
+        var callback2 = obj2.func();
+        setTimeout(callback2 , 1500);
+
+        var obj3 = {
+            name:'obj3'
+        };
+        var callback3 = obj1.func.call(obj3);
+        setTimeout(callback3 , 2000); */
+
+        /*setTimeout(function(name){
+            var coffeList = name;
+            console.log(coffeList);
+
+            setTimeout(function(name){
+                coffeList += ',' + name + 2;
+                console.log(coffeList);
+
+                setTimeout(function(name){
+                    coffeList += ',' + name + 3;
+                    console.log(coffeList);
+
+                    setTimeout(function(name){
+                        coffeList += ',' + name + 4;
+                        console.log(coffeList);
+                    }, 500, '카페라떼')
+                }, 500 , '카페모카')
+            },500, '아메리카노')
+        },500, '에스프레소')*/
+
+        /*var coffeList = '';
+
+        var addEspresso = function(name){
+            coffeList += name;
+            console.log(coffeList);
+            setTimeout(addAmericano , 500, '아메리카노');
+        };
+
+        var addAmericano = function(name){
+            coffeList += ',' + name;
+            console.log(coffeList);
+            setTimeout(addMocha , 500 , '카페모카');
+        };
+
+        var addMocha = function(name){
+            coffeList += ',' + name;
+            console.log(coffeList);
+            setTimeout(addLatte , 500 , '카페라떼');
+        };
+
+        var addLatte = function(name){
+            coffeList += ',' + name;
+            console.log(coffeList);
+        };
+
+        setTimeout(addEspresso, 500 , '에스프레소');*/
+
+        /*new Promise(function(resolve){
+            setTimeout(function(){
+                var name = '에스프레소';
+                console.log(name);
+                resolve(name);
+            },500);
+        }).then(function(prevName){     
+            return new Promise(function(resolve){
+                setTimeout(function(){
+                    var name = prevName + ',아메리카노';
+                    console.log(name);
+                    resolve(name);
+                },500);
+            });
+        }).then(function(prevName){     
+            return new Promise(function(resolve){
+                setTimeout(function(){
+                    var name = prevName + ',카페모카';
+                    console.log(name);
+                    resolve(name);
+                },500);
+            });
+        }).then(function(prevName){     
+            return new Promise(function(resolve){
+                setTimeout(function(){
+                    var name = prevName + ',카페라떼';
+                    console.log(name);
+                    resolve(name);
+                },500);
+            });
+        })*/
+
+        var outer =function(){
+            var a = 1;
+            var inner = function(){
+                console.log(++a);
+            };
+            inner();
+        };
+        outer();
+
+    </script>
+</body>
+</html>
