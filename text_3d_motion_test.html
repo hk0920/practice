@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {padding:0; margin:0;}
+    .motion_txt {position:relative;}
+    .txt_wrap {position:absolute; top:0; left:0; display:flex; flex-wrap: wrap;}
+    .txt_wrap .txt_3D {position:relative; transform:rotateX(0deg) translate(0, 0); transform-style:preserve-3d; transition:all ease 0.6s; font-size:50px; 
+    font-weight: bolder;}
+    .txt_wrap.type2 .txt_3D p {transform:translateX(0.15em) translateY(56%) rotateX(90deg) rotateZ(180deg) rotateY(180deg);}
+    .txt_wrap.type2 {top:20px;}
+    .txt_wrap.type2 .txt_3D {color:purple;}
+    .motion_txt:hover .txt_wrap.type1 .txt_3D {transform:rotateX(90deg) translate(20%, 0);}
+    .motion_txt:hover .txt_wrap.type2 .txt_3D {transform:rotateX(90deg) translate(0, 0);}
+
+</style>
+<body>
+    <div class="motion_txt">
+        <div class="txt_wrap type1">
+            <div class="txt_3D">
+                <p>H</p>
+            </div>
+            <div class="txt_3D">
+                <p>O</p>
+            </div>
+            <div class="txt_3D">
+                <p>M</p>
+            </div>
+            <div class="txt_3D">
+                <p>E</p>
+            </div>
+        </div>
+        <div class="txt_wrap type2">
+            <div class="txt_3D">
+                <p>H</p>
+            </div>
+            <div class="txt_3D">
+                <p>O</p>
+            </div>
+            <div class="txt_3D">
+                <p>M</p>
+            </div>
+            <div class="txt_3D">
+                <p>E</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
