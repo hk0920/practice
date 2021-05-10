@@ -1,0 +1,83 @@
+*{margin:0; padding:0; -webkit-text-size-adjust:none; box-sizing: border-box}
+html{width:100%; height:100%;}
+body{position:relative; font-size:12px; font-family:'ë‚˜ëˆ”ê³ ë”•', 'Nanum Gothic', 'ë§‘ì€ ê³ ë”•', 'Malgun Gothic', 'êµ´ë¦¼', 'Gulim', 'sans-serif', 'Tahoma'; color:#666;}
+body,div,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,p,form,fieldset,input,table,tr,th,td{margin:0; padding:0}
+ul,ol,li{list-style:none}
+img, fieldset{border:none; vertical-align:top}
+legend{display:none}
+button{vertical-align:middle;}
+input, select{height:16px; vertical-align:middle; background:#fff; border:1px solid #e6e6e6;color:#666;font-family:"malgun gothic", sans-serif, dotum,"ë‹ì›€",sans-serif;}
+input{padding:3px;}
+select{padding:2px}
+textarea{font-size:13px; font-family:"malgun gothic", sans-serif, dotum,"ë‹ì›€",sans-serif; color:#666; padding:3px; vertical-align:middle; background:#fff; border:1px solid #ddd; color:#777}
+.checkbox{padding:0; margin:0; border:0;}
+.disNone{display:none;}
+.disNone2{text-indent:-9999px}
+a{text-decoration:none; color:#666;}
+a:hover, a:focus, a:active{text-decoration:none; color:#666;}
+table{width:100%; border-collapse:collapse}
+.disB{display:block}
+caption {display:none}
+
+
+#wrapper{background:#f2f2f2; overflow: hidden}
+#header{text-align:center; background:#222;}
+#footer{text-align:center; border-top:1px solid #e5e5e5; background:#fff; padding:7px 0 16px;}
+#cBody{position:relative;}
+.inner {position:relative; width:1024px; height:100%; margin:0 auto; }
+.inner > div {position:absolute; top:20%; left:50%; width:450px; margin-left:-225px; opacity: 0;}
+.inner > div.pos1 {transition: all 0.6s ease /*cubic-bezier(.79,.11,.43,1.02); transform:skew(0.03deg)*/}
+.inner > div.pos2 {transition: all 0.6s ease/*cubic-bezier(.79,.11,.43,1.02); /*transform:skew(0.03deg)*/}
+.inner > div.pos3 {transition: all 0.6s ease/*cubic-bezier(.79,.11,.43,1.02); /*transform:skew(0.03deg)*/}
+.unit .proImg{position:relative; width:100%; height:auto; /* padding:25px 38px 38px 30px; */ z-index:500; background:url('../images/2Type_titleA.png') no-repeat -4px -5px; background-size:100% auto;}
+.inner > div:nth-child(2) .proImg{background:url('../images/2Type_titleB.png') no-repeat -4px -5px; background-size:100% auto;}
+/*.unit.three:nth-child(3) .proImg{background:url('../images/3Type_titleC.png') no-repeat center center; }*/
+.inner > div:nth-child(3) .proImg{background:url('../images/2Type_titleC.png') no-repeat -4px -5px; background-size:100% auto;}
+.unit {position:relative; }
+.unit .title {position:absolute; top:-70px; left:0; color:#00578c; font-weight:bold; font-size:52px; opacity:0; }
+
+.unit .img{position:relative; z-index:500; box-shadow:20px 40px 60px 10px rgba(0,0,0,0.3); /* box-shadow:20px 16px 20px 1px rgba(0,0,0,0.4); */ /* border:2px solid rgba(255,255,255,0.4) */}
+.unit .img .proImg{position:relative; z-index:500; /* width:462px; */width:466px; height:280px;}
+.unit .img .proImg .thumb{display:block; position:relative; width:100%; height:100%; overflow: hidden; z-index:500;}
+.unit .img .proImg .thumb > img {display:block; position:relative; width:100%;/* top:50%; left:50%; transform:translate(-50%, -50%) scale(1.0); */transition:transform 0s ease}
+.unit .img .proImg .thumb > img.scale {transform:scale(1.1); transition:transform 4s ease}
+
+.unit .img .onDiv{display:none; position:absolute; top:0px; left:0px; width:100%; height:100%; overflow:hidden; background:url('../images/on_bg.png') no-repeat 0 0; background-size:100% auto; text-align:center; z-index:1000; }
+.unit .img .onDiv.noShow {opacity:none}
+.unit .img .onDiv > div {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+.unit .img .onDiv a{display:inline-block; margin:0 3px;}
+
+.unit .subScript{display:none; position:relative; top:0px; left:0%; width:80%; padding:0 0; color:#555; z-index:10; /* opacity:0; */ letter-spacing:-0.25px; color:#222}
+.unit .subScript .tit{margin-top:30px; font-size:20px; font-weight:bold;}
+.unit .subScript .txt2{margin-top:15px; line-height:23px; font-size:13px;}
+
+/* 유닛 위치 및 크기 지정*/
+.inner > div.pos1 {position: absolute;top: 20%; left: 50%; width: 70%; margin-left: -50% ; z-index: 100;}
+.inner > div.pos2 {position: absolute;top: 49%; left: 57%; width: 38%; margin-left: 0 ;  z-index: 98; opacity: .4;}
+.inner > div.pos3 {position: absolute;top: 15%; left: 58%; width: 30.3%; margin-left: 0 ; z-index: 97; opacity: .6;}
+
+.inner > div.pos1 > .unit {opacity: 1; transition:opacity 0.6s ease}
+.inner > div.pos2 > .unit {opacity: 0.6; transition:opacity 0.6s ease}
+.inner > div.pos3 > .unit {opacity: 0.4; transition:opacity 0.6s ease}
+
+.inner > div.pos1 .unit .img .proImg, .inner > div.pos2 .unit .img .proImg, .inner > div.pos3 .unit .img .proImg {width:100%; height:auto}
+.inner > div.pos2 .unit .img .proImg .onDiv, .inner > div.pos3 .unit .img .proImg .onDiv {opacity:0}
+.inner > div.pos2 .unit .img .proImg .onDiv > div, .inner > div.pos3 .unit .img .proImg .onDiv > div {display:none}
+
+/* 타이틀  */
+/* .inner > div.pos1 .title {opacity:1;} */
+
+/* 백그라운드 */
+.bgWrap {position:absolute; width:100%; height:100%;}
+.bgWrap > div {position:absolute; width:100%; height:100%;}
+.bgWrap > div:after {content:""; display:block; position:absolute; width:100%; height:100%; background-color:rgba(0,0,0,0.7)}
+
+@media all and (max-width:1200px){
+    .inner {width:780px;}
+
+    /* 유닛 위치 및 크기 지정*/
+    .inner > div.pos2 {top:43%}
+
+    .unit .subScript .tit {margin-top:20px; font-size: 16px;}
+    .unit .subScript .txt2 {margin-top:10px;}
+}

@@ -1,0 +1,47 @@
+*{margin:0; padding:0; -webkit-text-size-adjust:none;}
+html{width:100%; height:100%;}
+body{position:relative; font-size:12px; font-family:'나눔고딕', 'Nanum Gothic', '맑은 고딕', 'Malgun Gothic', '굴림', 'Gulim', 'sans-serif', 'Tahoma'; color:#666;}
+body,div,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,p,form,fieldset,input,table,tr,th,td{margin:0; padding:0}
+ul,ol,li{list-style:none}
+img, fieldset{border:none; vertical-align:top}
+legend{display:none}
+button{vertical-align:middle;}
+input, select{height:16px; vertical-align:middle; background:#fff; border:1px solid #e6e6e6;color:#666;font-family:"malgun gothic", sans-serif, dotum,"돋움",sans-serif;}
+input{padding:3px;}
+select{padding:2px}
+textarea{font-size:13px; font-family:"malgun gothic", sans-serif, dotum,"돋움",sans-serif; color:#666; padding:3px; vertical-align:middle; background:#fff; border:1px solid #ddd; color:#777}
+.checkbox{padding:0; margin:0; border:0;}
+.disNone{display:none;}
+.disNone2{text-indent:-9999px}
+a{text-decoration:none; color:#666;}
+a:hover, a:focus, a:active{text-decoration:none; color:#666;}
+table{width:100%; border-collapse:collapse}
+.disB{display:block}
+caption {display:none}
+
+#wrapper{background:#f2f2f2}
+#header{text-align:center; background:#222;}
+#footer{text-align:center; border-top:1px solid #e5e5e5; background:#fff; padding:7px 0 16px;}
+#cBody{position:relative; width:980px; margin:auto}
+.twoA{position:absolute; top:0; left:15px; width:450px; height:300px;}
+.twoB{position:absolute; top:0; left:505px; width:450px; height:300px;}
+.threeA{position:absolute; top:0; left:15px; width:300px; height:300px;}
+.threeB{position:absolute; top:0; left:338px; width:300px; height:300px;}
+.threeC{position:absolute; top:0; left:655px; width:300px; height:300px;}
+
+.twoA.unit .proImg{position:relative; width:400px; height:250px; padding:25px 38px 38px 30px; z-index:500; background:url('../images/2Type_titleA.png') no-repeat 0 0;}
+.twoB.unit .proImg{position:relative; width:400px; height:250px; padding:25px 38px 38px 30px; z-index:500; background:url('../images/2Type_titleB.png') no-repeat 0 0;}
+.threeA.unit .proImg{position:relative; width:250px; height:250px; padding:25px; z-index:500; padding:25px 38px 38px 30px; background:url('../images/3Type_titleA.png') no-repeat 0 0;}
+.threeB.unit .proImg{position:relative; width:250px; height:250px; padding:25px; z-index:500; padding:25px 38px 38px 30px; background:url('../images/3Type_titleB.png') no-repeat 0 0;}
+.threeC.unit .proImg{position:relative; width:250px; height:250px; padding:25px; z-index:500; padding:25px 38px 38px 30px; background:url('../images/3Type_titleC.png') no-repeat 0 0;}
+
+.unit .img{position:relative; z-index:500;}
+.unit .img .onDiv{position:absolute; top:25px; left:30px; width:400px; height:40px; padding:105px 0; overflow:hidden; background:url('../images/on_bg.png') no-repeat 0 0; text-align:center; z-index:1000}
+.unit .img .onDiv.thr{position:absolute; top:25px; left:30px; width:250px; height:40px; padding:105px 0; overflow:hidden; background:url('../images/on_bg.png') no-repeat 0 0; text-align:center}
+.unit .img .onDiv a{display:inline-block; margin:0 3px;}
+.unit .img .thumb{z-index:500;}
+.unit .img .proImg{position:relative; z-index:500;}
+.unit .subScript{position:absolute; top:25px; left:0; padding:0 25px; font-size:13px;  color:#555; z-index:10;}
+.unit .subScript .tit{font-size:20px; font-weight:bold;}
+.unit .subScript .txt1{font-weight:bold; margin:17px 0 4px;}
+.unit .subScript .txt2{line-height:23px}

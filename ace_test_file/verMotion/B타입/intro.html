@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="Generator" content="EditPlus®">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>에이스침대 B타입</title>
+    <link rel="stylesheet" href="./css/swiper.min.css" />
+	<link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
+	<link rel="stylesheet" href="./css/style.css" />
+	<script type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="./greensock/TweenMax.js"></script>
+    <script type="text/javascript" src="./js/swiper.js"></script>    
+	<script type="text/javascript" src="./js/jquery.mCustomScrollbar.js"></script>  
+
+    <!-- <script src="./js/ScrollMagic.min.js"></script>
+    <script src="./js/debug.addIndicators.min.js"></script>
+    <script src="./js/animation.gsap.js"></script> -->
+    <script type="text/javascript" src="./js/script.js"></script>
+    
+
+    <style>
+        .video_wrap{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:100%; height:100%;}
+        .video_wrap video{position:absolute; min-width:100%; min-height:100%;}
+        .video_wrap .btn_skip{position:absolute; top:100px; left:100px; z-index:5;}
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            var v = document.getElementById("myVideo");
+            var raf;
+
+            function render() {
+                raf = requestAnimationFrame(render);
+                if(v.ended) {
+                    cancelAnimationFrame(raf);
+                    //링크이동 OR 메인 등장
+                }
+            }
+            render();
+
+
+            var btnSkip = document.querySelector(".btn_skip");
+            btnSkip.addEventListener("click", function(){
+                //링크이동 OR 메인 등장
+            });
+        })
+    </script>
+ </head>
+
+<body>
+    <div id="wrap">
+        <div class="video_wrap">
+            <a href="javascript:" class="btn_skip">SKIP</a>
+            <video id="myVideo" muted="true" autoplay playsinline preload="auto">
+                <source src="./video/video.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+    </div>
+</body>
+</html>

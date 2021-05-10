@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        ul {
+            display: block;
+            white-space: nowrap;
+            height: 300px;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            padding: 0;
+            font-size: 0;
+            scrollbar-width: none;
+            -ms-overflow-style:none;
+        }
+
+        ul::-webkit-scrollbar {display:none;}
+
+        li {
+            box-sizing: border-box;
+            height: 300px;
+            width: 300px;
+            display: inline-block;
+            border: 1px solid;
+            margin-right: 5px;
+        }
+
+        li:nth-child(4n) {
+            background: #B4B4B4;
+        }
+
+        li:nth-child(4n + 1) {
+            background: #2D2D2D;
+        }
+
+        li:nth-child(4n + 2) {
+            background: #857D68;
+        }
+
+        li:nth-child(4n + 3) {
+            background: #F5F5F5;
+        }
+
+        body.tapir li {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Malayan_Tapir.JPG/1200px-Malayan_Tapir.JPG');
+            background-size: cover;
+            background-position: 50% 55%;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li>
+        <li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <button>tapirify</button>
+
+    <script>
+        var diff = 0;
+        var ticking = false;
+
+        var wheelEvent = 'onwheel' in document.createElement("div") ? 'wheel' : 'mousewheel';
+
+        var list = document.querySelector('ul');
+
+        function doSomething(diff) {
+            list.scrollLeft += (diff);
+        }
+
+        list.addEventListener('wheel', function (e) {
+            diff = e.deltaY;
+            if (!ticking) {
+                window.requestAnimationFrame(function () {
+                    doSomething(diff);
+                    ticking = false;
+                    console.log("abc");
+                });
+            }
+            ticking = true;
+        }, { passive: true });
+
+        document.querySelector('button').addEventListener('click', function () { document.body.classList.toggle('tapir') }, null);
+    </script>
+</body>
+
+</html>

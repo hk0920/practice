@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./swiper.min.css">
+    <script type="text/javascript" src="./jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="./swiper.min.js"></script>
+</head>
+<body>
+  <!-- Swiper : 메인 -->
+  <div class="swiper-container mainV">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+          <p class="txt1">타이틀1111</p>
+          <p class="txt2">서브텍스트1111</p>
+      </div>
+      <div class="swiper-slide">
+          <p class="txt1">타이틀2222</p>
+          <p class="txt2">서브텍스트2222</p>
+      </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper : 배너 -->
+  <div class="banner_div">
+      <div class="swiper-container banner">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+              <a href="javascript:">
+                  <p class="txt1">타이틀1111</p>
+                  <p class="txt2">서브텍스트1111</p>
+              </a>
+          </div>
+          <div class="swiper-slide">
+              <a href="javascript:">
+                  <p class="txt1">타이틀2222</p>
+                  <p class="txt2">서브텍스트2222</p>
+              </a>
+          </div>
+          <div class="swiper-slide">
+              <a href="javascript:">
+                  <p class="txt1">타이틀3333</p>
+                  <p class="txt2">서브텍스트3333</p>
+              </a>
+          </div>
+          <div class="swiper-slide">
+              <a href="javascript:">
+                  <p class="txt1">타이틀4444</p>
+                  <p class="txt2">서브텍스트4444</p>
+              </a>
+          </div>
+          <div class="swiper-slide">
+              <a href="javascript:">
+                  <p class="txt1">타이틀5555</p>
+                  <p class="txt2">서브텍스트5555</p>
+              </a>
+          </div>
+          <div class="swiper-slide">
+              <a href="javascript:">
+                  <p class="txt1">타이틀6666</p>
+                  <p class="txt2">서브텍스트6666</p>
+              </a>
+          </div>
+          <div class="swiper-slide">
+              <a href="javascript:">
+                  <p class="txt1">타이틀7777</p>
+                  <p class="txt2">서브텍스트7777</p>
+              </a>
+          </div>
+          <div class="swiper-slide">
+              <a href="javascript:">
+                  <p class="txt1">타이틀8888</p>
+                  <p class="txt2">서브텍스트8888</p>
+              </a>
+          </div>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+  </div>
+</body>
+</html>
+<style>
+
+    * {padding:0; margin:0;}
+    .mainV .swiper-slide {
+        text-align:center;
+        height:500px;
+        background-color:powderblue;
+    }
+
+    .mainV .swiper-slide:nth-child(even) {
+        background-color:plum;
+    }
+
+    .mainV .swiper-slide p {
+        position:relative;
+        top:150px;
+    }
+
+    .mainV .txt1 {
+        font-size:40px;
+        font-weight:bold;
+    }
+
+    .banner_div {
+        position:relative;
+        width:1200px;
+        margin:100px auto;
+        /* overflow:hidden; */
+    }
+
+    .banner {
+        width:1200px;
+        /* height:200px; */
+        text-align:center;
+    }
+
+    .banner .swiper-slide {
+        height:100%;
+        padding-bottom:20px;
+        text-align:center;
+        overflow:hidden;
+    }
+
+    .banner .swiper-slide a {
+        display:block;
+        width:270px;
+        height:200px;
+        margin:0 auto;
+        border-radius:15px;
+        background-color:powderblue;
+        box-shadow:4px 8px 15px 2px rgb(0 0 0 / 15%);;
+
+    }
+
+    .banner .swiper-slide:last-child() a{ 
+        margin-right:0;
+    }
+
+    .banner .swiper-slide:nth-child(even) a{
+        background-color:plum;
+    }
+
+    .banner_div .swiper-button-next {
+        right:-50px;
+    }
+    .banner_div .swiper-button-prev {
+        left:-50px;
+    }
+
+</style>
+<script>
+    $(function(){
+        var mainSwiper = new Swiper('.swiper-container.mainV', {
+            slidesPerView: 1,
+            speed:800,
+            loop: true,
+            autoplay:true,
+            observer:true,
+            observeParents:true,
+            pagination: {
+                el: '.mainV .swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        
+        var bannerSwiper = new Swiper('.swiper-container.banner', {
+            slidesPerView: 4,
+            // spaceBetween:20,
+            speed:800,
+            loop: true,
+            // autoplay:true,
+            observer:true,
+            observeParents:true,
+            pagination: {
+                el: '.banner_div .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".banner_div .swiper-button-next",
+                prevEl: ".banner_div .swiper-button-prev",
+            },
+        });
+    });
+</script>

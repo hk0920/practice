@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/swiper.min.css">
+	<script type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="./greensock/TweenMax.js"></script>
+    <script type="text/javascript" src="./js/jquery.smoothwheel.js"></script>
+    <script type="text/javascript" src="./js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="./js/swiper.min.js"></script>
+</head>
+<style>
+    * {padding:0; margin:0;}
+    .swiper-container {
+        width: 50%;
+        height: 50%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+</style>
+<body>
+
+    <div class="wrap" style="position:relative; width:100%; height:100vh; overflow:hidden;">
+        <div class="box t1" style="position:absolute; top:0; left:0; display:block; width:100%; height:100vh; background:#ffeadc;"></div>
+        <div class="box t2" style="position:absolute; top:100%; left:0; display:block; width:100%; height:100vh; background:#fad3b9;">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">Slide 1</div>
+                  <div class="swiper-slide">Slide 2</div>
+                  <div class="swiper-slide">Slide 3</div>
+                  <div class="swiper-slide">Slide 4</div>
+                  <div class="swiper-slide">Slide 5</div>
+                </div>
+              </div>    
+        </div>
+        <div class="box t3" style="position:absolute; top:100%; left:0; display:block; width:100%; height:100vh; background:#f9bb92;"></div>
+        <div class="box t4" style="position:absolute; top:100%; left:0; display:block; width:100%; height:100vh; background:#fa9e60;"></div>
+    </div>
+    <script>
+        var swiper = new Swiper('.swiper-container');
+
+        var numWheelCount = 0;
+	 	$(".wrap").on("mousewheel DOMMouseScroll", function(e){
+	 		var E = e.originalEvent;
+	 		delta = 0;
+	 		if (E.deltaY) {
+	 			delta = E.deltaY * -140;
+	 		}else{
+	 			delta = E.wheelDelta;
+            }
+            console.log(e)
+            
+            if(delta < 0){  //
+                if(numWheelCount == 0){
+                    TweenMax.to($(".box.t1"),0.6, {top:"-100%", background:"#cccccc"})
+                    TweenMax.to($(".box.t2"),0.6, {top:"0" ,background:"#d50505"})
+                    numWheelCount = 1;
+                }else if(numWheelCount == 1){
+                    swiper.slideTo(1)
+                    numWheelCount = 2;
+                }
+                
+                console.log("내려가");
+
+            }else if (delta > 0){
+                if(numWheelCount == 1){
+                    TweenMax.to($(".box.t1"),0.6, {top:"0", background:"#ffeadc"})
+                    TweenMax.to($(".box.t2"),0.6, {top:"100%" ,background:"#fad3b9"})
+                    numWheelCount = 0;
+                }else if(numWheelCount == 2){
+                    swiper.slideTo(0)
+                    numWheelCount = 1;
+                }
+                console.log("올라가");
+
+            }
+        });
+
+    </script>
+</body>
+</html>
