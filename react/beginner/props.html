@@ -11,23 +11,58 @@
 </body>
 <script text="javascript" src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script text="javascript" src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script text="javascript" src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script> <!-- prop-type : 어떤 타입의 props를 받고 있는지를 체크해준다. -->
 <script text="javascript" src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     // props : 부모 컴포넌트에서 자식 컴포넌트로 값을 넘길 때 자식 컴포넌트에서 받는 인자 값 
     function Btn(props){    // text를 바로 받고  싶을 경우 ({text}) 로 축약할 수 있다.
-        console.log(props); // 객체 형태로 값이 받아진다.
+        // console.log(props); // 객체 형태로 값이 받아진다.
+        
+        console.log(props.text + "렌더링된다.")
 
         return(
-            <button style={{padding:"10px 20px", color:"white", border:0, borderRadius:10, backgroundColor:"purple", fontSize:props.big?"18px":"14px"}}>
+            <button style={{padding:"10px 20px", color:"white", border:0, borderRadius:10, backgroundColor:"purple", fontSize:props.big?"18px":"14px"}} 
+                    onClick={props.onClick}>    {/* 부모 컴포넌트에서 함수형으로 보낸 props도 사용할 수 있다. */}
                 {props.text}    {/* 인자값에 축약해서 들어오면 text로 바로 받을 수 있다. */}
             </button>
         )
     }
+
+    const MemorizedBtn = React.memo(Btn);
+    Btn.propTypes = {
+        text:PropsTypes.string,
+        fontSize:PropsTypes.number
+    }
+
     function App(){
+        const [value, setValue] = React.useState("Save Changes");
+        const changeValue = () => {
+            setValue("Revert Changes");
+        }
+        
         return(
             <div>
-                <Btn text="Save Changes" big="true" />        {/* 함수형 Btn({text:"Save Changes"}){} 와 동일 */}
-                <Btn text="Continue" />
+                {/*
+                    <Btn text="Save Changes" big="true" />        // 함수형 Btn({text:"Save Changes"}){} 와 동일
+                    <Btn text="Continue" />
+                */}
+                
+                {/* 
+                    // 이 경우에는 state 값이 변경될 때마다 재렌더링이 된다 (continue 버튼까지 ) => 추후에 어플리케이션이 느려지는 원인이 될 수 있다.
+
+                    <Btn text={value} onClick={changeValue} />  // 여기에서 onClick 은 이벤트리스너 onClick 이 아닌 props의 인자값이다. 
+                    <Btn text="Continue" />
+                */}
+                
+                {/* 위 상황을 방지하기 위해 React.memo(방지할 컴포넌트)를 사용한다. 
+                    이 경우는 continue 버튼은 값이 변경이 안되기 때문에 재렌더링안되고 1번째 btn만 변경된다. */}
+                <MemorizedBtn text={value} onClick={changeValue} />  
+                <MemorizedBtn text="Continue" />
+
+                <div className="prop-type">
+                    <Btn text={value} onClick={changeValue} />
+                    <Btn text={14} fontStyle={12345} />
+                </div>
             </div>
         );
     }
