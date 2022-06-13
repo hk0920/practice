@@ -18,7 +18,8 @@
     function Btn(props){    // text를 바로 받고  싶을 경우 ({text}) 로 축약할 수 있다.
         // console.log(props); // 객체 형태로 값이 받아진다.
         
-        console.log(props.text + "렌더링된다.")
+        // console.log(props.text + "렌더링된다.")
+        console.log(props.fontStyle)
 
         return(
             <button style={{padding:"10px 20px", color:"white", border:0, borderRadius:10, backgroundColor:"purple", fontSize:props.big?"18px":"14px", fontStyle:props.fontStyle}} 
@@ -30,8 +31,8 @@
 
     const MemorizedBtn = React.memo(Btn);
     Btn.propTypes = {
-        text:PropTypes.string,
-        fontStyle:PropTypes.array
+        text:PropTypes.number,
+        fontStyle:PropTypes.string
     }
 
     function App(){
@@ -61,7 +62,7 @@
 
                 <div className="prop-type">
                     <Btn text={value} fontStyle="italic" onClick={changeValue} />
-                    <Btn text="Continue" fontStyle={0} />
+                    <Btn text="Continue" fontStyle={1} />
                 </div>
             </div>
         );
