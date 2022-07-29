@@ -16,6 +16,7 @@
 <script type="text/babel">
     // props : 부모 컴포넌트에서 자식 컴포넌트로 값을 넘길 때 자식 컴포넌트에서 받는 인자 값 
     function Btn(props){    // text를 바로 받고  싶을 경우 ({text}) 로 축약할 수 있다.
+                            // props 명은 보낼 때와 받을 때 이름이 반드시 동일해야 가져올 수 있다. 
         // console.log(props); // 객체 형태로 값이 받아진다.
         
         // console.log(props.text + "렌더링된다.")
@@ -31,7 +32,7 @@
 
     const MemorizedBtn = React.memo(Btn);
     Btn.propTypes = {
-        text:PropTypes.number,
+        text:PropTypes.string.isRequired,
         fontStyle:PropTypes.string
     }
 
@@ -58,7 +59,7 @@
                 {/* 위 상황을 방지하기 위해 React.memo(방지할 컴포넌트)를 사용한다. 
                     이 경우는 continue 버튼은 값이 변경이 안되기 때문에 재렌더링안되고 1번째 btn만 변경된다. */}
                 <MemorizedBtn text={value} onClick={changeValue} />  
-                <MemorizedBtn text="Continue" />
+                <MemorizedBtn text={"Continue"} />
 
                 <div className="prop-type">
                     <Btn text={value} fontStyle="italic" onClick={changeValue} />
