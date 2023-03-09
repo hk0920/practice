@@ -37,6 +37,7 @@
         }
     });
     window.addEventListener("touchend", function(e){
+        e.preventDefault();     // click과 touch이벤트 중복 적용 대응
         if(e.target.closest(".box__scroll")){
             if(moveY<0){
                 if(document.querySelector(".box__list").classList.contains("full")){
