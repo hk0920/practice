@@ -11,7 +11,10 @@ function App() {
   console.log(range)
 
   if (range?.from) {
-    
+    setTimeout(() => {
+      const target = document.querySelector(".rdp-day_range_start")
+      target?.parentElement?.classList.add("ui-point");
+    }, 10);
     if (!range.to) {
 
     } else if (range.to) {
