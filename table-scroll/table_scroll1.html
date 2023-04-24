@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style> 
+    #userTbl { width: 600px; height: 200px; overflow-y: auto; } 
+    #userTblHead { width: 600px; overflow-x: hidden; } 
+    #userTbl table { border-top: 0px; } 
+    #userTblHead table { overflow: hidden; border-top: 2px solid #aaa; border-bottom: 1px solid #aaa; } 
+    .tblWrap table { width: 100%; border-spacing: 0; border-width: 1px 0; border-collapse: collapse; table-layout: fixed; } 
+    .tblWrap table thead th { background: #eee; } 
+    .tblWrap table td { text-align: center; border-bottom: 1px solid #aaa; } 
+    .tblWrap table td.left { text-align: left; padding-left: 10px; } 
+    .tblWrap table th:not(:last-child), table td:not(:last-child) { border-right: solid 1px #aaa; } 
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script type="text/javascript"> 
+    var sl = 0; $(function(){ 
+        $.fn.hasYScrollBar = function() { 
+            return (this.prop("scrollHeight") == 0 && this.prop("clientHeight") == 0) 
+                    || (this.prop("scrollHeight") > this.prop("clientHeight")); 
+        }; 
+            
+        $.fn.hasXScrollBar = function() { 
+            return (this.prop("scrollWidth") == 0 && this.prop("clientWidth") == 0) 
+                    || (this.prop("scrollWidth") > this.prop("clientWidth")); 
+        }; 
+        
+        $("#userTbl").scroll(function(event){ // data 테이블 x축 스크롤을 움직일 때header 테이블 x축 스크롤을 똑같이 움직인다
+            if (sl != $("#userTbl").scrollLeft()) { 
+                sl = $("#userTbl").scrollLeft(); 
+                $("#userTblHead").scrollLeft(sl); 
+            } 
+        }); 
+        
+        if ($("#userTbl").hasYScrollBar()) { //y축 스크롤이 있으면 스크롤 넓이인 17px만큼 header 마지막 열 크기를 늘린다 
+            $("#userTblHead colgroup col:last-child").width($("#userTbl colgroup col:last-child").width() + 17); 
+        } else { 
+            $("#userTblHead colgroup col:last-child").width($("#userTbl colgroup col:last-child").width()); 
+        } 
+    }); 
+</script>
+<body>
+    <div class="tblWrap"> 
+        <div id="userTblHead">
+            <table> <!-- col의 width를 %가 아닌 px 단위로 정확히 지정해야 두 테이블이 하나의 테이블 처럼 보인다 --> 
+                <colgroup>
+                    <col style="width:45px"> 
+                    <col style="width:100px"> 
+                    <col style="width:100px"> 
+                    <col style="width:100px"> 
+                    <col style="width:100px"> 
+                    <col style="width:150px"> 
+                    <col style="width:200px"> 
+                    <col style="width:130px"> 
+                    <col style="width:130px"> 
+                </colgroup> 
+                <thead> 
+                    <tr> 
+                        <th>No</th> 
+                        <th>이름</th> 
+                        <th>부서</th> 
+                        <th>직급</th> 
+                        <th>아이디</th> 
+                        <th>전화번호</th> 
+                        <th>이메일</th> 
+                        <th>생년월일</th> 
+                        <th>입사일</th> 
+                    </tr> 
+                </thead> 
+            </table> 
+        </div> 
+        <div id="userTbl"> 
+            <table> 
+                <colgroup> 
+                    <col style="width:45px"> 
+                    <col style="width:100px"> 
+                    <col style="width:100px"> 
+                    <col style="width:100px"> 
+                    <col style="width:100px"> 
+                    <col style="width:150px"> 
+                    <col style="width:200px"> 
+                    <col style="width:130px"> 
+                    <col style="width:130px"> 
+                </colgroup> 
+                <tbody> 
+                    <tr> 
+                        <td>1</td> 
+                        <td>홍길동</td> 
+                        <td>영업</td> 
+                        <td>사원</td> 
+                        <td>hong</td> 
+                        <td>010-1000-1000</td> 
+                        <td class="left">hong@company.co.kr</td>
+                        <td>1994-09-15</td> 
+                        <td>2017-05-08</td> 
+                    </tr> 
+                    <tr> 
+                        <td>2</td> 
+                        <td>홍길동</td> 
+                        <td>영업</td> 
+                        <td>사원</td> 
+                        <td>hong</td> 
+                        <td>010-1000-1000</td> <td class="left">hong@company.co.kr</td> 
+                        <td>1994-09-15</td> 
+                        <td>2017-05-08</td> </tr> <tr> 
+                        <td>3</td> 
+                        <td>홍길동</td> 
+                        <td>영업</td> 
+                        <td>사원</td> 
+                        <td>hong</td> 
+                        <td>010-1000-1000</td> <td class="left">hong@company.co.kr</td> 
+                        <td>1994-09-15</td> 
+                        <td>2017-05-08</td> </tr> <tr> 
+                        <td>4</td> 
+                        <td>홍길동</td> 
+                        <td>영업</td> 
+                        <td>사원</td> 
+                        <td>hong</td> 
+                        <td>010-1000-1000</td> <td class="left">hong@company.co.kr</td> 
+                        <td>1994-09-15</td> 
+                        <td>2017-05-08</td> </tr> <tr> 
+                        <td>5</td> 
+                        <td>홍길동</td> 
+                        <td>영업</td> 
+                        <td>사원</td> 
+                        <td>hong</td> 
+                        <td>010-1000-1000</td> <td class="left">hong@company.co.kr</td> 
+                        <td>1994-09-15</td> 
+                        <td>2017-05-08</td> </tr> <tr> 
+                        <td>6</td> 
+                        <td>홍길동</td> 
+                        <td>영업</td> 
+                        <td>사원</td> 
+                        <td>hong</td> 
+                        <td>010-1000-1000</td> <td class="left">hong@company.co.kr</td> 
+                        <td>1994-09-15</td> 
+                        <td>2017-05-08</td> </tr> <tr> 
+                        <td>7</td> 
+                        <td>홍길동</td> 
+                        <td>영업</td> 
+                        <td>사원</td> 
+                        <td>hong</td> 
+                        <td>010-1000-1000</td> <td class="left">hong@company.co.kr</td> 
+                        <td>1994-09-15</td> 
+                        <td>2017-05-08</td> </tr> <tr> 
+                        <td>8</td> 
+                        <td>홍길동</td> 
+                        <td>영업</td> 
+                        <td>사원</td> 
+                        <td>hong</td> 
+                        <td>010-1000-1000</td> <td class="left">hong@company.co.kr</td> 
+                        <td>1994-09-15</td> 
+                        <td>2017-05-08</td> </tr> <tr> 
+                        <td>9</td> 
+                        <td>홍길동</td> 
+                        <td>영업</td> 
+                        <td>사원</td> 
+                        <td>hong</td> 
+                        <td>010-1000-1000</td> <td class="left">hong@company.co.kr</td> 
+                        <td>1994-09-15</td> 
+                        <td>2017-05-08</td> 
+                    </tr> 
+                </tbody> 
+            </table> 
+        </div> 
+    </div>
+</body>
+</html>

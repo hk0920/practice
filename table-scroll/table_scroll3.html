@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style> 
+    #userTbl { width: 600px; height: 200px; overflow-y: auto; } 
+    #userTblHead { width: 600px; overflow-x: hidden; } 
+    #userTbl table { border-top: 0px; } 
+    #userTblHead table { overflow: hidden; border-top: 2px solid #aaa; border-bottom: 1px solid #aaa; } 
+    .box__table-wrap {width:600px;height:200px;}
+    .box__table-wrap table { width: 100%; border-spacing: 0; border-width: 1px 0; border-collapse: collapse; table-layout: fixed; } 
+    .box__table-wrap table thead th {position:sticky; background: #eee; } 
+    .box__table-wrap > table > tbody {}
+    .box__table-wrap table td { text-align: center; border-bottom: 1px solid #aaa; } 
+    .box__table-wrap table td.left { text-align: left; padding-left: 10px; } 
+    .box__table-wrap table th:not(:last-child), table td:not(:last-child) { border-right: solid 1px #aaa; } 
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script type="text/javascript"> 
+</script>
+<body>
+    <div class="box__table-wrap">
+      <table>
+        <colgroup>
+          <col width="150px" />
+          <col width="*">
+        </colgroup>
+        <thead>
+          <tr>
+            <td>
+              <div class="box__table">
+                <table>
+                  <tr>
+                    <th>타이틀1</th>
+                    <th>타이틀2</th>
+                  </tr>
+                </table>
+              </div>
+            </td>
+            <td>
+              <div class="box__table">
+                <table>
+                  <tr>
+                    <th>타이틀3</th>
+                    <th>타이틀4</th>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="box__table">
+                <table>
+                  <tr>
+                    <td>내용1</td>
+                    <td>내용2</td>
+                  </tr>
+                  <tr>
+                    <td>내용1</td>
+                    <td>내용2</td>
+                  </tr>
+                  <tr>
+                    <td>내용1</td>
+                    <td>내용2</td>
+                  </tr>
+                  <tr>
+                    <td>내용1</td>
+                    <td>내용2</td>
+                  </tr>
+                  <tr>
+                    <td>내용1</td>
+                    <td>내용2</td>
+                  </tr>
+                  <tr>
+                    <td>내용1</td>
+                    <td>내용2</td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+            <td>
+              <div class="box__table">
+                <table>
+                  <tr>
+                    <td>내용3</td>
+                    <td>내용4</td>
+                  </tr>
+                  <tr>
+                    <td>내용3</td>
+                    <td>내용4</td>
+                  </tr>
+                  <tr>
+                    <td>내용3</td>
+                    <td>내용4</td>
+                  </tr>
+                  <tr>
+                    <td>내용3</td>
+                    <td>내용4</td>
+                  </tr>
+                  <tr>
+                    <td>내용3</td>
+                    <td>내용4</td>
+                  </tr>
+                  <tr>
+                    <td>내용3</td>
+                    <td>내용4</td>
+                  </tr>
+                </table>
+              </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</body>
+</html>
