@@ -13,8 +13,12 @@
     .box__table-wrap {width:600px;height:200px;}
     .box__table-wrap table { width: 100%; border-spacing: 0; border-width: 1px 0; border-collapse: collapse; table-layout: fixed; } 
     .box__table-wrap table thead th {position:sticky; background: #eee; } 
-    .box__table-wrap > table > tbody {}
-    .box__table-wrap table td { text-align: center; border-bottom: 1px solid #aaa; } 
+    .box__table-wrap table tr{position:relative}
+    /* .box__table-wrap table tr:hover:before{content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;border:1px solid red;} */
+    .box__table-wrap table tr:hover td:before{content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;border:1px solid red;border-right:0;border-left:0;z-index:-1}
+    .box__table-wrap table tr:hover td:first-child:before{border-left:1px solid red;}
+    .box__table-wrap table tr:hover td:last-child:before{border-right:1px solid red;}
+    .box__table-wrap table td {position:relative; text-align: center; border-bottom: 1px solid #aaa; } 
     .box__table-wrap table td.left { text-align: left; padding-left: 10px; } 
     .box__table-wrap table th:not(:last-child), table td:not(:last-child) { border-right: solid 1px #aaa; } 
 </style>
@@ -25,6 +29,56 @@
 <body>
     <div class="box__table-wrap">
       <table>
+        <thead>
+          <tr>
+            <th>제목1</th>
+            <th>제목2</th>
+            <th>제목3</th>
+            <th>제목4</th>
+            <th>제목5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="https://www.naver.com/" target="_blank">네이버 바로가기</a>
+            </td>
+            <td>내용2</td>
+            <td>내용3</td>
+            <td>내용4</td>
+            <td>내용5</td>
+          </tr>
+          <tr>
+            <td>내용1</td>
+            <td>내용2</td>
+            <td>내용3</td>
+            <td>내용4</td>
+            <td>내용5</td>
+          </tr>
+          <tr>
+            <td>내용1</td>
+            <td>내용2</td>
+            <td>내용3</td>
+            <td>내용4</td>
+            <td>내용5</td>
+          </tr>
+          <tr>
+            <td>내용1</td>
+            <td>내용2</td>
+            <td>내용3</td>
+            <td>내용4</td>
+            <td>내용5</td>
+          </tr>
+          <tr>
+            <td>내용1</td>
+            <td>내용2</td>
+            <td>내용3</td>
+            <td>내용4</td>
+            <td>내용5</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <table>
         <colgroup>
           <col width="150px" />
           <col width="*">
@@ -86,7 +140,7 @@
               </div>
             </td>
             <td>
-              <div class="box__table">
+              <div class="box__scroll">
                 <table>
                   <tr>
                     <td>내용3</td>
@@ -113,10 +167,11 @@
                     <td>내용4</td>
                   </tr>
                 </table>
-              </div></td>
+              </div>
+            </td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
     </div>
 </body>
 </html>
